@@ -1,0 +1,344 @@
+/**
+ * Base Styles
+ *
+ * Styles for semantic HTML elements.
+ * All spacing conforms to the 0.5em grid system.
+ */
+
+/* ========================================
+   Document
+   ======================================== */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--font-base);
+  line-height: var(--line-height-normal);
+  min-height: 100vh;
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-block-end: var(--space-4);
+}
+
+h1 {
+  font-size: var(--font-5xl);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-block-end: var(--space-6);
+}
+
+h2 {
+  font-size: var(--font-4xl);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h3 {
+  font-size: var(--font-3xl);
+}
+
+h4 {
+  font-size: var(--font-2xl);
+}
+
+h5 {
+  font-size: var(--font-xl);
+}
+
+h6 {
+  font-size: var(--font-lg);
+}
+
+p {
+  margin-block-end: var(--space-4);
+}
+
+p:last-child {
+  margin-block-end: 0;
+}
+
+/* ========================================
+   Links
+   ======================================== */
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   Lists
+   ======================================== */
+
+ul,
+ol {
+  margin-block-end: var(--space-4);
+  padding-inline-start: var(--space-6);
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-block-end: 0;
+  margin-block-start: var(--space-2);
+}
+
+li {
+  margin-block-end: var(--space-2);
+}
+
+li:last-child {
+  margin-block-end: 0;
+}
+
+dl {
+  margin-block-end: var(--space-4);
+}
+
+dt {
+  font-weight: var(--font-weight-semibold);
+  margin-block-end: var(--space-1);
+}
+
+dd {
+  margin-inline-start: var(--space-4);
+  margin-block-end: var(--space-3);
+}
+
+dd:last-child {
+  margin-block-end: 0;
+}
+
+/* ========================================
+   Code & Preformatted Text
+   ======================================== */
+
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface);
+  padding: 0.125em var(--space-1);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+}
+
+pre {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-4);
+  margin-block-end: var(--space-4);
+  overflow-x: auto;
+  line-height: var(--line-height-relaxed);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+kbd {
+  font-family: var(--font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.125em var(--space-1);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+/* ========================================
+   Blockquote
+   ======================================== */
+
+blockquote {
+  border-inline-start: var(--space-1) solid var(--color-accent);
+  padding-inline-start: var(--space-4);
+  padding-block: var(--space-2);
+  margin-block-end: var(--space-4);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+blockquote > *:last-child {
+  margin-block-end: 0;
+}
+
+cite {
+  font-style: normal;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-sm);
+}
+
+/* ========================================
+   Horizontal Rule
+   ======================================== */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  margin-block: var(--space-8);
+}
+
+/* ========================================
+   Emphasis & Strong
+   ======================================== */
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+mark {
+  background-color: lch(85% 50 80);
+  color: var(--color-text);
+  padding: 0.125em var(--space-1);
+  border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   Small & Fine Print
+   ======================================== */
+
+small {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Media
+   ======================================== */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin-block-end: var(--space-6);
+}
+
+figcaption {
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  margin-block-start: var(--space-2);
+  text-align: center;
+}
+
+/* ========================================
+   Tables
+   ======================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block-end: var(--space-6);
+  font-size: var(--font-sm);
+}
+
+thead {
+  border-bottom: 2px solid var(--color-border);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  text-align: start;
+  padding: var(--space-2) var(--space-3);
+}
+
+td {
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ========================================
+   Details & Summary
+   ======================================== */
+
+details {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-3);
+  margin-block-end: var(--space-4);
+}
+
+summary {
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  padding: var(--space-2);
+  margin: calc(var(--space-3) * -1);
+  margin-block-end: 0;
+  border-radius: var(--radius-base);
+  transition: background-color var(--transition-fast);
+}
+
+summary:hover {
+  background-color: var(--color-surface);
+}
+
+details[open] summary {
+  margin-block-end: var(--space-3);
+}
+
+/* ========================================
+   Address
+   ======================================== */
+
+address {
+  font-style: normal;
+  line-height: var(--line-height-relaxed);
+  margin-block-end: var(--space-4);
+}

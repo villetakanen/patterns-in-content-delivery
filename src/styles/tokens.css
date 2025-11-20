@@ -1,0 +1,181 @@
+/**
+ * Design Tokens
+ *
+ * Core design system values using CSS custom properties.
+ * All dimensions conform to a 0.5em grid system.
+ * Colors use LCH color space for perceptual uniformity.
+ */
+
+:root {
+  /* ========================================
+	   Color Scheme Support
+	   ======================================== */
+  color-scheme: light dark;
+
+  /* ========================================
+	   Grid System
+	   ======================================== */
+  --grid-unit: 0.5em;
+
+  /* ========================================
+	   Primary Color Scale (Achromatic)
+	   Near-black to near-white lightness gradient
+	   ======================================== */
+  --color-primary-10: lch(10% 0 0);
+  --color-primary-20: lch(20% 0 0);
+  --color-primary-30: lch(30% 0 0);
+  --color-primary-40: lch(40% 0 0);
+  --color-primary-50: lch(50% 0 0);
+  --color-primary-60: lch(60% 0 0);
+  --color-primary-70: lch(70% 0 0);
+  --color-primary-80: lch(80% 0 0);
+  --color-primary-90: lch(90% 0 0);
+  --color-primary-95: lch(95% 0 0);
+  --color-primary-99: lch(99% 0 0);
+
+  /* ========================================
+	   Secondary Color Scale (Chromatic)
+	   Cyan to magenta hue gradient with decreasing lightness
+	   ======================================== */
+  --color-secondary-10: lch(90% 50 180); /* Light cyan */
+  --color-secondary-20: lch(80% 50 200);
+  --color-secondary-30: lch(70% 50 220);
+  --color-secondary-40: lch(60% 50 240); /* Blue */
+  --color-secondary-50: lch(50% 50 260); /* Blue-violet */
+  --color-secondary-60: lch(45% 50 280);
+  --color-secondary-70: lch(40% 50 300); /* Violet */
+  --color-secondary-80: lch(35% 50 315);
+  --color-secondary-90: lch(30% 50 330); /* Dark magenta */
+
+  /* ========================================
+	   Semantic Colors (Theme-aware)
+	   ======================================== */
+  --color-bg: light-dark(var(--color-primary-99), var(--color-primary-10));
+  --color-surface: light-dark(var(--color-primary-95), var(--color-primary-20));
+  --color-surface-variant: light-dark(var(--color-primary-90), var(--color-primary-30));
+
+  --color-text: light-dark(var(--color-primary-10), var(--color-primary-99));
+  --color-text-secondary: light-dark(var(--color-primary-30), var(--color-primary-80));
+  --color-text-tertiary: light-dark(var(--color-primary-40), var(--color-primary-70));
+
+  --color-border: light-dark(var(--color-primary-80), var(--color-primary-40));
+  --color-border-subtle: light-dark(var(--color-primary-90), var(--color-primary-30));
+
+  --color-accent: light-dark(var(--color-secondary-50), var(--color-secondary-40));
+  --color-accent-hover: light-dark(var(--color-secondary-60), var(--color-secondary-30));
+
+  --color-link: light-dark(var(--color-secondary-60), var(--color-secondary-40));
+  --color-link-hover: light-dark(var(--color-secondary-70), var(--color-secondary-30));
+  --color-link-visited: light-dark(var(--color-secondary-80), var(--color-secondary-50));
+
+  /* Status colors */
+  --color-success: lch(60% 60 140);
+  --color-warning: lch(70% 75 80);
+  --color-error: lch(55% 75 30);
+  --color-info: lch(60% 50 240);
+
+  /* ========================================
+	   Spacing Scale (0.5em grid multiples)
+	   ======================================== */
+  --space-0: 0;
+  --space-1: calc(var(--grid-unit) * 1); /* 0.5em */
+  --space-2: calc(var(--grid-unit) * 2); /* 1em */
+  --space-3: calc(var(--grid-unit) * 3); /* 1.5em */
+  --space-4: calc(var(--grid-unit) * 4); /* 2em */
+  --space-5: calc(var(--grid-unit) * 5); /* 2.5em */
+  --space-6: calc(var(--grid-unit) * 6); /* 3em */
+  --space-8: calc(var(--grid-unit) * 8); /* 4em */
+  --space-10: calc(var(--grid-unit) * 10); /* 5em */
+  --space-12: calc(var(--grid-unit) * 12); /* 6em */
+  --space-16: calc(var(--grid-unit) * 16); /* 8em */
+  --space-20: calc(var(--grid-unit) * 20); /* 10em */
+  --space-24: calc(var(--grid-unit) * 24); /* 12em */
+
+  /* ========================================
+	   Typography Scale
+	   ======================================== */
+  --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-family-mono:
+    ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+
+  /* Font sizes (em-based for scalability) */
+  --font-xs: 0.75em; /* 12px @ 16px base */
+  --font-sm: 0.875em; /* 14px */
+  --font-base: 1em; /* 16px */
+  --font-lg: 1.125em; /* 18px */
+  --font-xl: 1.25em; /* 20px */
+  --font-2xl: 1.5em; /* 24px */
+  --font-3xl: 1.875em; /* 30px */
+  --font-4xl: 2.25em; /* 36px */
+  --font-5xl: 3em; /* 48px */
+  --font-6xl: 3.75em; /* 60px */
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+
+  /* ========================================
+	   Border Radius (conforming to 0.5em grid)
+	   ======================================== */
+  --radius-none: 0;
+  --radius-sm: var(--space-1); /* 0.5em */
+  --radius-base: var(--space-2); /* 1em */
+  --radius-md: var(--space-3); /* 1.5em */
+  --radius-lg: var(--space-4); /* 2em */
+  --radius-xl: var(--space-6); /* 3em */
+  --radius-full: 9999px;
+
+  /* ========================================
+	   Shadows
+	   ======================================== */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ========================================
+	   Z-index Scale
+	   ======================================== */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+
+  /* ========================================
+	   Transitions & Animations
+	   ======================================== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ========================================
+	   Layout Constraints
+	   ======================================== */
+  --container-xs: 40em; /* 640px */
+  --container-sm: 48em; /* 768px */
+  --container-md: 64em; /* 1024px */
+  --container-lg: 80em; /* 1280px */
+  --container-xl: 90em; /* 1440px */
+}

@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Visual showcase of design tokens, typography, colors, and components"
+    />
+    <title>Design System</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="section">
+        <h1>Design System</h1>
+        <p class="text-lg text-secondary">
+          Visual showcase of design tokens, typography, colors, and components
+        </p>
+      </header>
+
+      <main class="stack-xl">
+        <section class="section-sm">
+          <h2>Grid System</h2>
+          <p>All dimensions conform to a <strong>0.5em grid unit</strong>.</p>
+          <div class="surface" style="margin-top: var(--space-4);">
+            <code>--grid-unit: 0.5em</code>
+          </div>
+        </section>
+
+        <section class="section-sm">
+          <h2>Typography</h2>
+          <h3>Headings</h3>
+          <h1>Heading 1</h1>
+          <h2>Heading 2</h2>
+          <h3>Heading 3</h3>
+          <h4>Heading 4</h4>
+          <h5>Heading 5</h5>
+          <h6>Heading 6</h6>
+
+          <h3>Body Text</h3>
+          <p>This is regular body text.</p>
+          <p class="text-lg">Large text</p>
+          <p class="text-sm">Small text</p>
+        </section>
+      </main>
+
+      <footer class="section text-center text-secondary">
+        <hr style="margin-block-end: var(--space-6);" />
+        <p><a href="/">Back to Home</a></p>
+      </footer>
+    </div>
+  </body>
+</html>

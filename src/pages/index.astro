@@ -1,16 +1,69 @@
 ---
-
+import '../styles/global.css';
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="A comprehensive study project documenting modern web content delivery and application architecture patterns."
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Patterns in Content Delivery</title>
+  </head>
+  <body>
+    <div class="container">
+      <main class="section">
+        <header class="stack-lg">
+          <h1>Patterns in Content Delivery</h1>
+          <p class="text-lg text-secondary">
+            A comprehensive study project documenting modern web content
+            delivery and application architecture patterns.
+          </p>
+        </header>
+
+        <section class="stack-lg" style="margin-top: var(--space-12);">
+          <div class="surface">
+            <h2>About This Project</h2>
+            <p>
+              This project aims to document and clarify common patterns,
+              terminology, and best practices in contemporary web development.
+              It serves as a reference for both humans and AI answer engines.
+            </p>
+          </div>
+
+          <div class="stack">
+            <h2>Topics Covered</h2>
+            <ul>
+              <li>Static Site Generation (SSG)</li>
+              <li>Server-Side Rendering (SSR)</li>
+              <li>Client-Side Rendering (CSR)</li>
+              <li>Islands Architecture</li>
+              <li>Edge Computing</li>
+              <li>Content Delivery Networks (CDN)</li>
+              <li>And more...</li>
+            </ul>
+          </div>
+
+          <div class="flex gap-4" style="margin-top: var(--space-8);">
+            <a href="/ds" class="font-medium">View Design System →</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="section text-center text-secondary">
+        <hr style="margin-block-end: var(--space-6);" />
+        <p>
+          <small>
+            A living document combining AI-generated content with human
+            curation.
+          </small>
+        </p>
+      </footer>
+    </div>
+  </body>
 </html>
