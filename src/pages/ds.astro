@@ -15,7 +15,96 @@ import Page from '../layouts/Page.astro';
 
   <div class="stack-xl">
     <section class="section-sm">
-      <h2>Grid System</h2>
+      <h2>Golden Ratio Layout Grid</h2>
+      <p>
+        Our layout uses a three-column CSS Grid system with Named Lines,
+        creating optimal reading experiences through Golden Ratio mathematics.
+      </p>
+
+      <h3 style="margin-top: var(--space-6);">Mathematical Foundation</h3>
+      <p>
+        The Golden Ratio (φ ≈ 1.618) creates harmonious proportions. In our
+        layout: <strong>Content = φ² × Gutter</strong>
+      </p>
+      <div class="surface" style="margin-top: var(--space-4);">
+        <code>--phi: 1.618</code><br />
+        <code>--phi-squared: 2.618</code><br />
+        <code>--measure: 65ch</code> (optimal reading length)<br />
+        <code>--gutter: clamp(1rem, 5vw, calc(65ch / 2.618))</code> ≈ 24.8ch max
+      </div>
+
+      <h3 style="margin-top: var(--space-6);">Default: Content Column</h3>
+      <p>
+        By default, all content stays within the optimal reading column (~65ch).
+        This text is an example of the default layout.
+      </p>
+
+      <h3 style="margin-top: var(--space-6);">Breakout: Content + Gutters</h3>
+      <p>Use <code>.breakout</code> to span content plus both gutters:</p>
+      <div
+        class="breakout surface"
+        style="margin-top: var(--space-4); background-color: var(--color-accent); color: var(--color-bg); padding: var(--space-6); text-align: center;"
+      >
+        <strong>This element spans the breakout zone</strong>
+        <p style="margin-top: var(--space-2);">
+          Content column + left gutter + right gutter
+        </p>
+        <p style="margin-top: var(--space-2); opacity: 0.9;">
+          <code>.breakout</code> class applied
+        </p>
+      </div>
+
+      <h3 style="margin-top: var(--space-6);">Full-Width: Edge-to-Edge</h3>
+      <p>Use <code>.full-width</code> to span the entire viewport:</p>
+    </section>
+
+    <div
+      class="full-width"
+      style="background: linear-gradient(135deg, var(--color-secondary-40) 0%, var(--color-secondary-60) 100%); color: var(--color-bg); padding: var(--space-12); text-align: center; margin-block: var(--space-6);"
+    >
+      <h3 style="color: var(--color-bg); margin-block-end: var(--space-2);">
+        Full-Width Hero Section
+      </h3>
+      <p style="margin-block-end: 0; opacity: 0.95;">
+        This spans edge-to-edge across the entire viewport
+      </p>
+      <p style="margin-top: var(--space-2); opacity: 0.9;">
+        <code>.full-width</code> class applied
+      </p>
+    </div>
+
+    <section class="section-sm">
+      <h3>Layout Usage Summary</h3>
+      <div class="stack" style="margin-top: var(--space-4);">
+        <div class="surface">
+          <strong>Default (no class)</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Content column only (~65ch). Optimal for reading text.
+          </p>
+        </div>
+        <div class="surface">
+          <strong>.breakout</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Content + both gutters. Good for images, diagrams, and figures.
+          </p>
+        </div>
+        <div class="surface">
+          <strong>.full-width</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Edge-to-edge. Use for hero sections and full-bleed images.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <h2>Grid System (Spacing)</h2>
       <p>All dimensions conform to a <strong>0.5em grid unit</strong>.</p>
       <div class="surface" style="margin-top: var(--space-4);">
         <code>--grid-unit: 0.5em</code>

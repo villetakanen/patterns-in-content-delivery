@@ -185,4 +185,23 @@
   --breakpoint-small: 620px; /* Small screens, typically mobile devices */
   --breakpoint-medium: 960px; /* Medium screens, such as tablets */
   --breakpoint-wide: 1365px; /* Wide screens, accommodating most desktop displays */
+
+  /* ========================================
+	   Golden Ratio Layout System
+	   ======================================== */
+  /* Mathematical Constants */
+  --phi: 1.618; /* Golden Ratio (φ) */
+  --phi-squared: calc(var(--phi) * var(--phi)); /* φ² ≈ 2.618 */
+
+  /* Layout Configuration */
+  --measure: 65ch; /* Optimal line length for reading comfort (60-75ch) */
+  --base-spacing: 1rem; /* Base unit for spacing calculations */
+
+  /* Responsive Gutter Logic:
+     - Small screens: 1rem minimum (safe spacing)
+     - Flexible middle: 5vw (scales with viewport)
+     - Large screens: measure / φ² (e.g., 65ch / 2.618 ≈ 24.8ch)
+     - This creates the Golden Ratio relationship: Content = φ² × Gutter
+  */
+  --gutter: clamp(var(--base-spacing), 5vw, calc(var(--measure) / var(--phi-squared)));
 }

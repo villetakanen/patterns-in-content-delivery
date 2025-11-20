@@ -215,3 +215,48 @@
 .section-lg {
   padding-block: var(--space-16);
 }
+
+/* ========================================
+   Golden Ratio Grid Layout System
+   ======================================== */
+
+/**
+ * Layout Grid with Named Lines
+ *
+ * Creates a three-column grid system:
+ * 1. Left gutter (flexible, scales with viewport)
+ * 2. Content column (capped at --measure for optimal reading)
+ * 3. Right gutter (flexible, scales with viewport)
+ *
+ * Named lines allow children to span different zones:
+ * - Default: content column only (~65ch)
+ * - .breakout: content + both gutters
+ * - .full-width: edge-to-edge viewport width
+ *
+ * The gutter size follows Golden Ratio mathematics:
+ * - Content width = φ² × Gutter width
+ * - On large screens: 65ch = φ² × ~24.8ch
+ */
+
+.layout-grid {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [breakout-start] min(100% - (var(--gutter) * 2), var(--measure))
+    [breakout-end] minmax(var(--gutter), 1fr) [full-end];
+}
+
+/* Default: all children span the content column (middle column) */
+.layout-grid > * {
+  grid-column: 2;
+}
+
+/* Breakout: span content + both gutters (all three columns) */
+.layout-grid > .breakout {
+  grid-column: breakout;
+}
+
+/* Full-width: span edge-to-edge (all three columns, same as breakout) */
+.layout-grid > .full-width {
+  grid-column: full;
+}
