@@ -1,0 +1,71 @@
+---
+import '../../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  siteName?: string;
+  author?: string;
+  keywords?: string;
+  type?: string;
+  twitterSite?: string;
+  twitterCreator?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  url = Astro.url.href,
+  siteName = 'Patterns in Content Delivery',
+  author,
+  keywords,
+  type = 'website',
+  twitterSite,
+  twitterCreator,
+} = Astro.props;
+
+// Generate full title with site name
+const fullTitle = `${title} | ${siteName}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{author && <meta name="author" content={author} />}
+{keywords && <meta name="keywords" content={keywords} />}
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={url} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_US" />
+{image && <meta property="og:image" content={image} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{image && <meta name="twitter:image" content={image} />}
+{twitterSite && <meta name="twitter:site" content={twitterSite} />}
+{twitterCreator && <meta name="twitter:creator" content={twitterCreator} />}
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

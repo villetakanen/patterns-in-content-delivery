@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/core/BaseHead.astro';
+import PageFooter from '../components/core/PageFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  url?: string;
+  author?: string;
+  keywords?: string;
+  type?: string;
+  twitterSite?: string;
+  twitterCreator?: string;
+}
+
+const { title, description, image, url, author, keywords, type, twitterSite, twitterCreator } =
+  Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      url={url}
+      author={author}
+      keywords={keywords}
+      type={type}
+      twitterSite={twitterSite}
+      twitterCreator={twitterCreator}
+    />
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <slot />
+      </main>
+      <PageFooter />
+    </div>
+  </body>
+</html>

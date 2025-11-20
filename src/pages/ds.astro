@@ -1,91 +1,79 @@
 ---
-import '../styles/global.css';
+import Page from '../layouts/Page.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Visual showcase of design tokens, typography, colors, and components"
-    />
-    <title>Design System</title>
-  </head>
-  <body>
-    <div class="container">
-      <header class="section">
-        <h1>Design System</h1>
-        <p class="text-lg text-secondary">
-          Visual showcase of design tokens, typography, colors, and components
-        </p>
-      </header>
+<Page
+  title="Design System"
+  description="Visual showcase of design tokens, typography, colors, and components"
+>
+  <header class="section">
+    <h1>Design System</h1>
+    <p class="text-lg text-secondary">
+      Visual showcase of design tokens, typography, colors, and components
+    </p>
+  </header>
 
-      <main class="stack-xl">
-        <section class="section-sm">
-          <h2>Grid System</h2>
-          <p>All dimensions conform to a <strong>0.5em grid unit</strong>.</p>
-          <div class="surface" style="margin-top: var(--space-4);">
-            <code>--grid-unit: 0.5em</code>
-          </div>
-        </section>
+  <div class="stack-xl">
+    <section class="section-sm">
+      <h2>Grid System</h2>
+      <p>All dimensions conform to a <strong>0.5em grid unit</strong>.</p>
+      <div class="surface" style="margin-top: var(--space-4);">
+        <code>--grid-unit: 0.5em</code>
+      </div>
+    </section>
 
-        <section class="section-sm">
-          <h2>Typography</h2>
-          <h3>Headings</h3>
-          <h1>Heading 1</h1>
-          <h2>Heading 2</h2>
-          <h3>Heading 3</h3>
-          <h4>Heading 4</h4>
-          <h5>Heading 5</h5>
-          <h6>Heading 6</h6>
+    <section class="section-sm">
+      <h2>Typography</h2>
+      <h3>Headings</h3>
+      <h1>Heading 1</h1>
+      <h2>Heading 2</h2>
+      <h3>Heading 3</h3>
+      <h4>Heading 4</h4>
+      <h5>Heading 5</h5>
+      <h6>Heading 6</h6>
 
-          <h3>Body Text</h3>
-          <p>This is regular body text.</p>
-          <p class="text-lg">Large text</p>
-          <p class="text-sm">Small text</p>
-        </section>
+      <h3>Body Text</h3>
+      <p>This is regular body text.</p>
+      <p class="text-lg">Large text</p>
+      <p class="text-sm">Small text</p>
+    </section>
 
-        <section class="section-sm">
-          <h2>Responsive Breakpoints</h2>
-          <p>
-            Our breakpoint tokens define key screen sizes for managing
-            responsive behavior at a global level.
+    <section class="section-sm">
+      <h2>Responsive Breakpoints</h2>
+      <p>
+        Our breakpoint tokens define key screen sizes for managing responsive
+        behavior at a global level.
+      </p>
+      <div class="stack-lg" style="margin-top: var(--space-4);">
+        <div class="surface">
+          <strong>--breakpoint-small: 620px</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Small screens, typically mobile devices
           </p>
-          <div class="stack-lg" style="margin-top: var(--space-4);">
-            <div class="surface">
-              <strong>--breakpoint-small: 620px</strong>
-              <p
-                style="margin-top: var(--space-1); color: var(--color-text-secondary);"
-              >
-                Small screens, typically mobile devices
-              </p>
-            </div>
-            <div class="surface">
-              <strong>--breakpoint-medium: 960px</strong>
-              <p
-                style="margin-top: var(--space-1); color: var(--color-text-secondary);"
-              >
-                Medium screens, such as tablets
-              </p>
-            </div>
-            <div class="surface">
-              <strong>--breakpoint-wide: 1365px</strong>
-              <p
-                style="margin-top: var(--space-1); color: var(--color-text-secondary);"
-              >
-                Wide screens, accommodating most desktop displays
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
+        <div class="surface">
+          <strong>--breakpoint-medium: 960px</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Medium screens, such as tablets
+          </p>
+        </div>
+        <div class="surface">
+          <strong>--breakpoint-wide: 1365px</strong>
+          <p
+            style="margin-top: var(--space-1); color: var(--color-text-secondary);"
+          >
+            Wide screens, accommodating most desktop displays
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <footer class="section text-center text-secondary">
-        <hr style="margin-block-end: var(--space-6);" />
-        <p><a href="/">Back to Home</a></p>
-      </footer>
-    </div>
-  </body>
-</html>
+    <section class="section-sm text-center">
+      <p><a href="/" class="font-medium">← Back to Home</a></p>
+    </section>
+  </div>
+</Page>
