@@ -223,15 +223,17 @@
 /**
  * Layout Grid with Named Lines
  *
- * Creates a three-column grid system:
- * 1. Left gutter (flexible, scales with viewport)
- * 2. Content column (capped at --measure for optimal reading)
- * 3. Right gutter (flexible, scales with viewport)
+ * Creates a five-column grid system:
+ * 1. Left flexible space (minmax(var(--space-4), 1fr)) - expands beyond gutters
+ * 2. Left gutter (minmax(0, var(--gutter))) - up to ~24.8ch on large screens
+ * 3. Content column (capped at --measure for optimal reading) - ~65ch
+ * 4. Right gutter (minmax(0, var(--gutter))) - up to ~24.8ch on large screens
+ * 5. Right flexible space (minmax(var(--space-4), 1fr)) - expands beyond gutters
  *
  * Named lines allow children to span different zones:
  * - Default: content column only (~65ch)
- * - .breakout: content + both gutters
- * - .full-width: edge-to-edge viewport width
+ * - .breakout: content + both gutters (~24.8ch + 65ch + 24.8ch ≈ 114.6ch)
+ * - .full-width: edge-to-edge viewport width (100vw)
  *
  * The gutter size follows Golden Ratio mathematics:
  * - Content width = φ² × Gutter width
@@ -241,25 +243,28 @@
 .layout-grid {
   display: grid;
   grid-template-columns:
-    [full-start breakout-start] minmax(var(--gutter), 1fr)
+    [full-start] minmax(var(--space-4), 1fr)
+    [breakout-start] minmax(0, var(--gutter))
     [content-start] min(
-      100% - (var(--gutter) * 2),
+      100% - (var(--gutter) * 2) - (var(--space-4) * 2),
       var(--measure)
-    ) [content-end]
-    minmax(var(--gutter), 1fr) [breakout-end full-end];
+    )
+    [content-end]
+    minmax(0, var(--gutter)) [breakout-end]
+    minmax(var(--space-4), 1fr) [full-end];
 }
 
-/* Default: all children span the content column (middle column) */
+/* Default: all children span the content column (column 3 of 5) */
 .layout-grid > * {
   grid-column: content;
 }
 
-/* Breakout: span content + both gutters (all three columns) */
+/* Breakout: span content + both gutters (columns 2-4: gutter + content + gutter) */
 .layout-grid > .breakout {
   grid-column: breakout;
 }
 
-/* Full-width: span edge-to-edge (all three columns, same as breakout) */
+/* Full-width: span edge-to-edge (all five columns: space + gutter + content + gutter + space) */
 .layout-grid > .full-width {
   grid-column: full;
 }
