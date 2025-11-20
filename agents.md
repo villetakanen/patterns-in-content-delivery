@@ -35,16 +35,18 @@ This is a comprehensive study project documenting modern web content delivery an
 - Components in `src/components/`
 - Pages in `src/pages/`
 - Layouts in `src/layouts/`
-- Content (pattern documentation) in `src/content/`
+- **Content (pattern documentation) in `src/data/books/`** - Markdown files
 - Shared utilities in `src/utils/`
 - Type definitions in `src/types/`
+- Work items in `docs/backlog/` and `docs/done/`
 
 ### Component Patterns
 
 - Prefer Astro components (`.astro`) for static content
-- Use framework components (React, Vue, etc.) only when interactivity is needed
+- **SSG only** - `output: 'static'` in config, no SSR/hybrid rendering
 - Follow Islands Architecture - minimize client-side JavaScript
-- Use Astro's built-in features (Content Collections, Image optimization)
+- Use Astro's built-in features (Image optimization)
+- Pattern articles go in `src/data/books/` as Markdown files
 
 ## Documentation Standards
 
@@ -124,16 +126,22 @@ Examples:
 
 - **ALWAYS use pnpm**, never npm or yarn
 - Lock file: `pnpm-lock.yaml`
+- `.npmrc` enforces pnpm usage with `engine-strict=true`
 - Commands:
   - `pnpm install` - Install dependencies
   - `pnpm add <package>` - Add dependency
   - `pnpm add -D <package>` - Add dev dependency
   - `pnpm remove <package>` - Remove dependency
+  - `pnpm prepare` - Initialize Lefthook git hooks
 
 ## Testing & Quality
 
-- Prefer built-in TypeScript checking
+- Prefer built-in TypeScript checking (strict mode enabled)
 - Use Biome for linting and formatting
+  - `pnpm check` - Run Biome checks
+  - `pnpm format` - Format all files
+  - `pnpm lint:fix` - Fix lint issues
+- Lefthook runs pre-commit checks automatically
 - Test builds before committing: `pnpm build`
 - Verify content renders correctly: `pnpm preview`
 
@@ -147,11 +155,15 @@ Examples:
 
 ## Performance
 
+- **SSG only** - No SSR, pure static generation for maximum speed
 - Optimize images (use Astro's Image component)
-- Minimize client-side JavaScript
-- Leverage Astro's partial hydration
-- Consider edge rendering for dynamic content
-- Monitor bundle size
+- Minimize client-side JavaScript (zero-JS by default)
+- Leverage Astro's partial hydration when needed
+- Content hashing for automatic cache busting
+- Netlify CDN for global distribution
+- Optimized cache headers:
+  - Hashed assets: 1 year immutable
+  - HTML: 24h with stale-while-revalidate
 
 ## When Unsure
 
@@ -161,12 +173,22 @@ Examples:
 4. Ask for clarification rather than guessing
 5. Prefer simpler solutions over complex ones
 
+## Deployment
+
+- Target platform: **Netlify**
+- Build command: `pnpm build`
+- Publish directory: `dist`
+- Configuration in `netlify.toml`
+- Automatic CDN cache invalidation on deploy
+
 ## Project-Specific Notes
 
 - This is a **study project** - exploration and experimentation are encouraged
 - Balance **educational value** with **technical accuracy**
 - Think about **both human readers and AI answer engines** as the audience
 - The goal is to **clarify confusion** around web architecture patterns, not add to it
+- Pattern documentation lives in `src/data/books/` as Markdown files
+- Use PBIs in `docs/backlog/` to track work items
 
 ---
 

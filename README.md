@@ -49,12 +49,36 @@ This study explores patterns including (but not limited to):
 
 🚧 **Work in Progress** - This is an active study project being built incrementally.
 
+## Project Structure
+
+```
+src/
+├── data/
+│   └── books/          # Pattern documentation (markdown articles)
+├── pages/              # Astro pages
+├── layouts/            # Page layouts
+└── components/         # Reusable components
+
+docs/
+├── backlog/            # Work items in progress
+└── done/               # Completed work items
+```
+
 ## Development
+
+### Setup
 
 ```bash
 # Install dependencies
 pnpm install
 
+# Initialize git hooks (Lefthook)
+pnpm prepare
+```
+
+### Commands
+
+```bash
 # Start development server
 pnpm dev
 
@@ -66,7 +90,28 @@ pnpm preview
 
 # Lint and format
 pnpm check
+
+# Format code
+pnpm format
+
+# Fix lint issues
+pnpm lint:fix
 ```
+
+### Tooling
+
+- **Biome** - Fast formatter and linter (replaces ESLint + Prettier)
+- **Lefthook** - Simple git hooks for pre-commit checks
+- **commitlint** - Enforces conventional commit messages
+- **TypeScript** - Strict mode enabled
+
+### Performance Optimizations
+
+- **SSG Only** - Pure static site generation (no SSR)
+- **Content Hashing** - Automatic cache busting for assets
+- **Optimized Caching** - 24h cache with stale-while-revalidate
+- **Netlify CDN** - Global edge distribution
+- **Minimal JavaScript** - Leverages Astro's zero-JS approach
 
 ## Contributing
 
