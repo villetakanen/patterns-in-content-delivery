@@ -1,6 +1,6 @@
 # PBI-002: Basic Styling and Design System
 
-**Status:** Backlog  
+**Status:** Complete  
 **Priority:** High  
 **Type:** Feature
 
@@ -22,6 +22,7 @@ Establish a foundational design system with light/dark theme support using moder
   - [ ] Border radius values (conforming to 0.5em grid)
   - [ ] Shadows
   - [ ] Transitions/animations
+  - [x] Responsive breakpoints (small: 620px, medium: 960px, wide: 1365px)
 - [ ] Light/dark theme support using `light-dark()` CSS function
   - [ ] Automatic switching based on `prefers-color-scheme`
   - [ ] Optional manual theme toggle (future enhancement)

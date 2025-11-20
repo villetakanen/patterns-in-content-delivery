@@ -178,4 +178,11 @@
   --container-md: 64em; /* 1024px */
   --container-lg: 80em; /* 1280px */
   --container-xl: 90em; /* 1440px */
+
+  /* ========================================
+	   Responsive Breakpoints
+	   ======================================== */
+  --breakpoint-small: 620px; /* Small screens, typically mobile devices */
+  --breakpoint-medium: 960px; /* Medium screens, such as tablets */
+  --breakpoint-wide: 1365px; /* Wide screens, accommodating most desktop displays */
 }
