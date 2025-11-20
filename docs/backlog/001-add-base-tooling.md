@@ -23,7 +23,7 @@ Set up the foundational development tooling for the project. This includes the c
   - [ ] Scripts added to `package.json` (`check`, `format`, `lint`)
 - [ ] commitlint configured
   - [ ] `.commitlintrc.json` or `commitlint.config.js` created
-  - [ ] Husky hooks set up for pre-commit and commit-msg
+  - [ ] Lefthook configured for git hooks (pre-commit and commit-msg)
   - [ ] Conventional commit format enforced
 - [ ] TypeScript configured
   - [ ] `tsconfig.json` properly set up
@@ -59,10 +59,11 @@ Set up the foundational development tooling for the project. This includes the c
    - Configure formatting and linting rules
    - Add npm scripts
 
-4. Configure commitlint
+4. Configure commitlint and Lefthook
    - Install commitlint and conventional config
-   - Install Husky for git hooks
-   - Set up commit-msg hook
+   - Install Lefthook: `pnpm add -D lefthook`
+   - Create `lefthook.yml` with pre-commit and commit-msg hooks
+   - Initialize Lefthook: `pnpm lefthook install`
    - Test with example commits
 
 5. Verify setup
@@ -98,6 +99,27 @@ Use conventional commits format:
 - `style:` - Formatting
 - `refactor:` - Code refactoring
 
+### Lefthook Configuration
+
+Create `lefthook.yml`:
+```yaml
+pre-commit:
+  commands:
+    biome:
+      run: pnpm biome check --apply .
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm commitlint --edit {1}
+```
+
+Lefthook is simpler than Husky:
+- Single YAML configuration file
+- Faster execution (written in Go)
+- No need for separate hook scripts
+- Easy to read and maintain
+
 ### Astro SSG Configuration
 
 Set in `astro.config.mjs`:
@@ -116,16 +138,30 @@ Create `netlify.toml`:
   command = "pnpm build"
   publish = "dist"
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
+# HTML files - 24h with stale-while-revalidate
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=86400"
+
+# Hashed assets (JS, CSS, images) - long cache, Astro auto-busts via content hash
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Other static files - 24h with stale-while-revalidate
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=86400"
 ```
+
+**Cache Busting Strategy:**
+- Astro (via Vite) automatically generates content-hashed filenames for JS/CSS/images (e.g., `main.abc123.js`)
+- Hashed assets can have long cache times (1 year immutable) since filename changes on content change
+- HTML files use 24h + stale-while-revalidate for graceful updates
+- Netlify automatically invalidates CDN cache on new deploys
 
 ### Content Structure
 
@@ -170,7 +206,7 @@ None - This is the first infrastructure task.
 
 ## Estimated Effort
 
-3-4 hours
+2-3 hours (Lefthook simplifies git hook setup)
 
 ## References
 
@@ -178,5 +214,6 @@ None - This is the first infrastructure task.
 - [Biome Documentation](https://biomejs.dev/)
 - [commitlint Documentation](https://commitlint.js.org/)
 - [pnpm Documentation](https://pnpm.io/)
+- [Lefthook Documentation](https://github.com/evilmartians/lefthook)
 - [Netlify Configuration](https://docs.netlify.com/configure-builds/file-based-configuration/)
 - [Astro SSG Guide](https://docs.astro.build/en/guides/deploy/netlify/)
