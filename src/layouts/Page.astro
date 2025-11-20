@@ -34,11 +34,9 @@ const { title, description, image, url, author, keywords, type, twitterSite, twi
     />
   </head>
   <body>
-    <div class="layout-grid">
-      <main>
-        <slot />
-      </main>
+    <main class="layout-grid">
+      <slot />
       <PageFooter />
-    </div>
+    </main>
   </body>
 </html>
